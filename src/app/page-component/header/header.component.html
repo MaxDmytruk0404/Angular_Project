@@ -1,0 +1,43 @@
+<header class="color-component-switching py-3 color-text-switching sm:py-3">
+
+    <div class="my-container flex justify-between">
+
+        <a routerLink="" (click)="filterVisibelNone()"><i class="fa-solid fa-film"></i></a>
+
+        <ul class="hidden gap-4 sm:flex" *ngIf="userFound == ''">
+            <li><a class="pb-1" routerLink="Popular">Most Popular</a></li>
+            <li><a class="pb-1" routerLink="MySaves">Saved</a></li>
+            <li><a class="pb-1" routerLink="Login">Login</a></li>
+            <li><a class="pb-1" routerLink="Registration">Registration</a></li>
+            <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i class="fa-solid fa-moon"></i></li>
+            <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i class="fa-solid fa-sun"></i></li>
+        </ul>
+
+        <ul class="hidden gap-4 sm:flex" *ngIf="userFound == 'true'">
+            <li><a class="pb-1" routerLink="Popular">Most Popular</a></li>
+            <li><a class="pb-1" routerLink="MySaves">Saved</a></li>
+            <li class="cursor-pointer"><i class="fa-solid fa-user" routerLink="Profile"></i></li>
+            <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i class="fa-solid fa-moon"></i></li>
+            <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i class="fa-solid fa-sun"></i></li>
+        </ul>
+
+        <!-- Для розширення екрану 640 px і менше -->
+        <ul class="flex gap-4 sm:hidden" *ngIf="userFound == ''">
+            <li><a routerLink="Popular"><i class="fa-solid fa-fire"></i></a></li>
+            <li><a class="pb-1" routerLink="MySaves"><i class="fa-solid fa-star"></i></a></li>
+            <li class="cursor-pointer"><a class="pb-1" routerLink="Login"><i class="fa-solid fa-user"></i></a></li>
+            <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i class="fa-solid fa-moon"></i></li>
+            <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i class="fa-solid fa-sun"></i></li>
+        </ul>
+
+        <ul class="flex gap-4 sm:hidden" *ngIf="userFound == 'true'">
+            <li><a class="pb-1" routerLink="MySaves"><i class="fa-solid fa-star"></i></a></li>
+            <li><a routerLink="Popular"><i class="fa-solid fa-fire"></i></a></li>
+            <li class="cursor-pointer"><i class="fa-solid fa-user" routerLink="Profile"></i></li>
+            <li class="cursor-pointer" *ngIf="colorFon == 'night'" (click)="getDay()"><i class="fa-solid fa-moon"></i></li>
+            <li class="cursor-pointer" *ngIf="colorFon == 'day'" (click)="getNight()"><i class="fa-solid fa-sun"></i></li>
+        </ul>
+
+    </div>
+
+</header>

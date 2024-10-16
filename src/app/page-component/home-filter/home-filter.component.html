@@ -1,0 +1,49 @@
+
+<div class="flex mb-2 gap-2 flex-col">
+    <h2 class="color-text-switching py-2 color-component-switching text-center">Category:</h2>
+    <button *ngFor="let button of filterBtnsType" (click)="setActiveBtn(button)"
+        [ngClass]="button.isActive ?  filterAtive : filterNoAtive">{{button.text}}</button>
+</div>
+
+<div class="overflow-hidden relative z-0">
+
+    <div [ngClass]="filterCategory == 'movie' ? 'genre-active' : 'genre-no-active'" >
+        <h2 class="color-text-switching py-2 color-component-switching text-center">Genre:</h2>
+        <div *ngFor="let genre of filmGenre" class="flex gap-2 justify-between px-1">
+            <p class="color-text-switching text-sm">{{genre.name}}</p>
+            <label class="flex items-center cursor-pointer">
+                <input type="checkbox" class="hidden" [value]="genre.id" (change)="onCheckboxFilmChange($event, ((genre.id).toString()))"/>
+                <span class="w-4 h-4 border-2 border-gray-400 rounded-md flex items-center justify-center mr-2"></span>
+            </label>
+        </div>
+    </div>
+
+    <div [ngClass]="filterCategory == 'tv' ? 'genre-active' : 'genre-no-active'">
+        <h2 class="color-text-switching py-2 color-component-switching text-center">Genre:</h2>
+        <div *ngFor="let genre of tvGenre" class="flex gap-2 justify-between px-1">
+            <p class="color-text-switching text-sm">{{genre.name}}</p>
+            <label class="flex items-center cursor-pointer">
+                <input type="checkbox" class="hidden" [value]="genre.id" (change)="onCheckboxTvChange($event, ((genre.id).toString()))"/>
+                <span class="w-4 h-4 border-2 border-gray-400 rounded-md flex items-center justify-center mr-2"></span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<h2 class="color-text-switching py-2 color-component-switching text-center mb-2">Year:</h2>
+<div class="flex mb-2 gap-2 items-center justify-center">
+    <span class="color-text-switching">from</span>
+    <input type="number" class="w-12 text-center rounded color-input-switching" id="minYear" min="1900" max="2024" [(ngModel)]="filterMinYear" (change)="checkCorectingInputMinYear()">
+    <span class="color-text-switching">to</span>
+    <input type="number" class="w-12 text-center rounded color-input-switching" id="maxYear" min="1900" max="2024" [(ngModel)]="filterMaxYear" (change)="checkCorectingInputMaxYear()">
+
+</div>
+
+<button (click)="FilterByCategory()"
+    class="my-button block search-btn w-5/6 m-auto text-sm px-6 py-2 mt-4 mb-4 border-none color-text-switching color-component-switching cursor-pointer search-btn">Застосувати</button>
+
+<!-- Повідомлення про помилку -->
+<div *ngIf="errorMessage"
+class="error fixed bottom-5 left-1/4 m-auto bg-red-500 w-1/2 p-4 rounded mt-2 flex justify-center z-10">
+<p class="text-white">{{errorMessage}}</p>
+</div>

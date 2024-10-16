@@ -1,0 +1,70 @@
+<div class="my-container">
+
+  <app-search></app-search>
+
+  <div class="flex gap-4">
+
+    <div class="w-1/6 my-shadow h-full rounded-md overflow-hidden filter-home">
+      <app-home-filter></app-home-filter>
+    </div>
+
+    <div class="w-5/6 home-content">
+
+      <h2 class="color-text-switching text-lg text-center py-1 color-component-switching">Best in 2024</h2>
+
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+
+      <div ngxSlickItem *ngFor="let slide of slidesBestIn2024"
+        class="text-center m-2 color-text-switching relative bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow">
+
+        <div [routerLink]="['Information', slide.id]" class="cursor-pointer media-h overflow-hidden my-hover">
+          <img src="{{slide.img}}" alt="" class="m-auto pt-5 w-64 object-cover my-hover-img">
+          <h2 class="p-2 flex-grow ">{{slide.name}}</h2>
+          <div class="flex gap-2 flex-wrap justify-center translate-y-28 my-hover-elem">
+            <p class="border px-2 py-1 rounded border-zinc-400">{{slide.type}}</p>
+            <p class="border px-2 py-1 rounded border-zinc-400">{{slide.year}}</p>
+          </div>
+        </div>
+
+        <!-- Кнопка зберегти в збережені -->
+        <i (click)="saveFilm(slide.img, slide.name, slide.type, slide.year, slide.id)"
+          class="fa-solid fa-star absolute top-2 right-2 text-yellow-200 film-save cursor-pointer hover:text-yellow-400 "></i>
+
+      </div>
+
+    </ngx-slick-carousel>
+
+    <h2 class="color-text-switching text-lg text-center py-1 color-component-switching mt-5">Recommend</h2>
+
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+
+      <div ngxSlickItem *ngFor="let slide of slidesRecomend"
+        class="text-center m-2 color-text-switching relative bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow">
+
+        <div [routerLink]="['Information', slide.id]" class="cursor-pointer media-h overflow-hidden my-hover">
+          <img src="{{slide.img}}" alt="" class="m-auto pt-5 w-64 object-cover my-hover-img">
+          <h2 class="p-2 flex-grow ">{{slide.name}}</h2>
+          <div class="flex gap-2 flex-wrap justify-center translate-y-28 my-hover-elem">
+            <p class="border px-2 py-1 rounded border-zinc-400">{{slide.type}}</p>
+            <p class="border px-2 py-1 rounded border-zinc-400">{{slide.year}}</p>
+          </div>
+        </div>
+
+        <!-- Кнопка зберегти в збережені -->
+        <i (click)="saveFilm(slide.img, slide.name, slide.type, slide.year, slide.id)"
+          class="fa-solid fa-star absolute top-2 right-2 text-yellow-200 film-save cursor-pointer hover:text-yellow-400 "></i>
+
+      </div>
+
+    </ngx-slick-carousel>
+    </div>
+    
+  </div>
+
+</div>
+
+ <!-- Повідомлення про успішний вхід -->
+ <div *ngIf="message"
+ class="fixed bottom-5 left-1/4 m-auto bg-green-500 w-1/2 p-4 rounded mt-2 flex justify-center">
+ <p class="text-white">{{message}}</p>
+</div>

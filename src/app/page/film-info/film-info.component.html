@@ -1,0 +1,30 @@
+<div class="my-container">
+
+    <div *ngIf="filmInfo" class="gap-7 p-8 lg:max-lg:flex-wrap lg:flex max-sm:p-2">
+
+        <div class="img-box">
+            <img class="m-auto" *ngIf="filmInfo.Poster !== 'N/A'" [src]="filmInfo.Poster">
+        </div>
+
+        <div class="lg:w-9/12 lg:max-lg:w-full">
+            
+            <div class="flex gap-2 justify-center">
+                <h2 class=" text-xl font-bold color-text-switching my-1 flex items-center justify-center gap-2">{{filmInfo.Title}} </h2>
+            <span class="text-xl font-bold px-3 py-1 flex justify-center items-center rounded bg-amber-400 shadow-box to-black  max-sm:1/3 max-sm:text-lg">{{filmInfo.imdbRating}}/10</span>
+            </div>
+            
+            <div class="flex justify-center gap-2 my-5">
+                <div class="w-1/3 h-12 flex justify-center items-center text-lg uppercase bg-amber-400 shadow-box rounded to-black font-extrabold max-sm:text-sm">{{filmInfo.Runtime}}</div>
+                <div class="w-1/3 h-12 flex justify-center items-center text-lg uppercase bg-amber-400 shadow-box rounded to-black font-extrabold max-sm:text-sm">{{filmInfo.Type}}</div>
+                <div class="w-1/3 h-12 flex justify-center items-center text-lg uppercase bg-amber-400 shadow-box rounded to-black font-extrabold max-sm:text-sm">{{filmInfo.Year}}</div>
+            </div>
+
+            <p class="color-text-switching color-component-switching m-1 p-2 paragraf-gradient">Actors: {{filmInfo.Actors}}</p>
+            <p class="color-text-switching color-component-switching m-1 p-2 paragraf-gradient">Writer: {{filmInfo.Writer}}</p>
+            <p class="color-text-switching color-component-switching m-1 p-2 paragraf-gradient">Genre: {{filmInfo.Genre}}</p>
+            <p class="color-text-switching color-component-switching m-1 p-2 paragraf-gradient">Plot: {{filmInfo.Plot}}</p>
+        </div>
+
+    </div>
+    <div *ngIf="!filmInfo" class="loader"></div>
+</div>

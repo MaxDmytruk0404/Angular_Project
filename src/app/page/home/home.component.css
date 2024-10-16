@@ -1,0 +1,18 @@
+.slick-prev {
+  left: 0 !important;
+  z-index: 1 !important; 
+}
+
+.slick-next {
+  right: 0 !important;
+  z-index: 1 !important;
+}
+
+@media screen and (max-width: 1150px){
+  .filter-home{
+      display: none;
+  }
+  .home-content{
+    width: 100%;
+  }
+}

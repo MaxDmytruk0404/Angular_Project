@@ -1,0 +1,37 @@
+<div class="my-container">
+  <!-- IMDb Rating -->
+  <div class="flex justify-center mt-5 font-bold items-center color-text-switching flex-col">
+    <h2 class="text-2xl">IMDb Rating</h2>
+    <div class="ml-2 flex gap-2 ">
+      <button *ngFor="let button of filterBtnIMDb" (click)="setActiveBtnIMDb(button)"
+        [ngClass]="button.isActive ?  filterAtive : filterNoAtive">{{button.name}}</button>
+    </div>
+  </div>
+  <div class="flex justify-center pt-5 flex-col lg:flex-row">
+    <highcharts-chart class="min-w-96 max-w-96 m-auto" *ngIf="filterUse == 'IMDb Rating'" [Highcharts]="Highcharts"
+      [options]="chartOptionsPopularMovies"></highcharts-chart>
+    <highcharts-chart class="min-w-96 max-w-96 m-auto " *ngIf="filterUse == 'Number of rating'"
+      [Highcharts]="Highcharts" [options]="chartOptionsNumberRatingMovies"></highcharts-chart>
+    <highcharts-chart class="min-w-96 max-w-96 m-auto" *ngIf="filterUse == 'IMDb Rating'" [Highcharts]="Highcharts"
+      [options]="chartOptionsPopularSerial"></highcharts-chart>
+    <highcharts-chart class="min-w-96 max-w-96 m-auto" *ngIf="filterUse == 'Number of rating'" [Highcharts]="Highcharts"
+      [options]="chartOptionsNumberRatingSerial"></highcharts-chart>
+  </div>
+
+  <!-- Best in 2024 -->
+  <div class="flex justify-center mt-5 font-bold items-center color-text-switching flex-col">
+    <h2 class="text-2xl text-center">The best movies and series of 2024</h2>
+    <div class="ml-2 flex gap-2 ">
+      <button *ngFor="let button of filterBtnBest2024" (click)="setActiveBtnBestIn2024(button)"
+        [ngClass]="button.isActive ?  filterAtive : filterNoAtive">{{button.name}}</button>
+    </div>
+  </div>
+  <div class="flex justify-center pt-5">
+    <highcharts-chart class="min-w-96" *ngIf="filter2024Use == 'Worldwide'" [Highcharts]="Highcharts"
+      [options]="chartOptionsWorldwid2024"></highcharts-chart>
+    <highcharts-chart class="min-w-96" *ngIf="filter2024Use == 'Domestic'" [Highcharts]="Highcharts"
+      [options]="chartOptionsDomestic2024"></highcharts-chart>
+    <highcharts-chart class="min-w-96" *ngIf="filter2024Use == 'Foreign'" [Highcharts]="Highcharts"
+      [options]="chartOptionsForeign2024"></highcharts-chart>
+  </div>
+</div>

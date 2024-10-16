@@ -1,0 +1,59 @@
+<div class="my-container">
+
+    <form class="login-box max-w-96 m-auto p-5 mt-16 rounded-xl color-form-shadow-swithing color-text-switching">
+
+        <h2 class="text-2xl mb-8">Sign in to your account</h2>
+
+        <div class="flex flex-col mb-3">
+            <label class="text-sm sm:text-base max-w-48 mb-2">Your email</label>
+            <input class="text-sm sm:text-base h-10 outline-none px-2 rounded border-none color-input-switching" placeholder="name@gmail.com" type="email" name="email" [(ngModel)]="email" autocomplete="on" [attr.name]="rememberChecbox ? 'name' : ''">
+        </div>
+
+        <div class="flex flex-col mb-5">
+            <label class="text-sm sm:text-base max-w-48 mb-2">Password</label>
+            <input class="text-sm sm:text-base h-10 outline-none px-2 rounded border-none color-input-switching" placeholder="******"
+               type="password" name="password" [(ngModel)]="password">
+        </div>
+
+        <p *ngIf="validateMassage != ''" class="text-rose-500 text-base">*{{validateMassage}}*</p>
+
+        <button
+            class="block my-button m-auto w-full h-8 rounded border-none color-component-switching cursor-pointer mt-6 color-form-shadow-swithing text-base" type="button" (click)="login()">Login</button>
+
+        <div class="flex justify-between mt-3">
+            <div class="flex gap-1 items-center">
+                <input type="checkbox" id="checkbox" name="checkbox" [(ngModel)]="rememberChecbox">
+                <p class="color-link-text-switching">Remember me</p>
+            </div>
+            <p class="cursor-pointer hover:border-b-2 border-color" routerLink="/ForgotPassword">Forgot password?</p>
+        </div>
+
+         <!-- Кнпка входу в gmail -->
+
+         <div class="h-10 w-64 mt-2 bg-blue-600 m-auto rounded-lg relative flex items-center justify-center cursor-pointer" (click)="signWithGoogle()">
+            <img class="h-8 absolute -left-3 top-1" src="assets/gmail-icon.png" alt="">
+            <p class="text-white">Sign in with google</p>
+        </div>
+
+        <h3 class="text-sm color-link-text-switching  text-center mt-4 ">Don’t have an account yet? <a
+            class="color-link-switching border-color hover:border-b-2" routerLink="/Registration">Registration</a></h3>
+
+        </form>
+
+
+
+</div>
+
+ <!-- Повідомлення про помилку -->
+ <div *ngIf="errorMessage"
+ class="fixed bottom-5 left-1/4 m-auto bg-red-500 w-1/2 p-4 rounded mt-2 flex justify-center">
+ <p class="text-white">{{errorMessage}}</p>
+</div>
+
+ <!-- Повідомлення про успішну реєстрацію -->
+ <div *ngIf="message"
+ class="fixed bottom-5 left-1/4 m-auto bg-green-500 w-1/2 p-4 rounded mt-2 flex justify-center">
+ <p class="text-white">{{message}}</p>
+</div>
+
+

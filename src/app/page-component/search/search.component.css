@@ -1,0 +1,33 @@
+.search-btn:hover{
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+.error{
+    z-index: 2;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+.hover-block {
+    z-index: 10;
+    pointer-events: none;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-128px);
+    transition: max-height 0.8s ease, opacity 0.8s ease, transform 0.8s ease;
+}
+.hover-block.is-visible {
+    height: 128px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 20px; opacity: 1;}
+}
+@keyframes fadeout {
+    from {bottom: 20px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+ }  

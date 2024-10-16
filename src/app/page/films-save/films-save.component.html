@@ -1,0 +1,28 @@
+<div class="my-container pt-5">
+
+    <div class="grid grid-cols-4 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
+
+            <div class="relative" *ngFor="let film of filmSave" class=" relative h-full color-text-switching pb-4 color-shadow-switching overflow-hidden bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow cursor-pointer text-center m-auto w-full">
+
+                <div class="cursor-pointer media-h overflow-hidden my-hover" [routerLink]="['/Information', film.id]">
+
+                    <img class="m-auto pt-5 w-64 object-cover my-hover-img px-2" *ngIf="film.poster !== 'N/A'" [src]='film.poster' alt="{{film.title}}">
+                    <img class="m-auto pt-5 w-64 object-cover my-hover-img px-2" *ngIf="film.poster == 'N/A'" src='assets/notFound.jpg' alt="{{film.title}}">
+
+                    <h2 class="p-2 flex-grow ">{{film.title}}</h2>
+
+                    <div class="flex gap-2 flex-wrap justify-center translate-y-28 my-hover-elem">
+                        <p class="border px-2 py-1 rounded border-zinc-400">{{film.type}}</p>
+                        <p class="border px-2 py-1 rounded border-zinc-400">{{film.year}}</p>
+                    </div>
+
+                </div>
+
+               <div class="absolute bg-red-500 w-8 h-8 top-2 right-2 flex justify-center items-center rounded-full">
+                <i (click)="removeFilm(film.id)" class="fa-solid fa-xmark text-lg  text-white cursor-pointer"></i>
+               </div>
+            </div> 
+
+    </div>
+
+</div>

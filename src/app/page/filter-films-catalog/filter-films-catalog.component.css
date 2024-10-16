@@ -1,0 +1,18 @@
+
+.search-btn:hover{
+    background-color: var(--color-text);
+    color: var(--color-bg)
+}
+
+.error{
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 20px; opacity: 1;}
+}
+@keyframes fadeout {
+    from {bottom: 20px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+ }  

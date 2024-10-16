@@ -1,0 +1,41 @@
+input:checked + span {
+    background-color: #60A5FA;
+}
+
+input:checked + span svg {
+    display: block;
+}
+.genre-no-active {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+}  
+.genre-active {
+    transition: transform 600ms ease-in, opacity 600ms ease-in;
+    transform: translateY(0);
+    opacity: 1;
+    position: relative;
+    z-index: -1;
+}
+.filter-btn:hover{
+    background-color: var(--color-text);
+    color: var(--color-bg)
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+  }
+input[type="number"]:hover,
+input[type="number"]:focus {
+    -moz-appearance: number-input;
+}
+input[type="number"]:focus {
+    border: 2px solid var(--color-text);
+    outline: none;
+}

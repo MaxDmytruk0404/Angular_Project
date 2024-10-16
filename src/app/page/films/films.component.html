@@ -1,0 +1,70 @@
+<div class="my-container flex gap-10">
+
+
+    <div class="w-full">
+
+        <app-search></app-search>
+
+        <!-- Списки фільмів -->
+        <div *ngIf="receviedFilm"
+            class="grid grid-cols-4 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
+
+
+            <!-- Блок з фільмом -->
+            <div *ngFor="let film of films"
+                class=" relative h-full color-text-switching pb-4 color-shadow-switching overflow-hidden bg-white/[.03] backdrop-blur-sm rounded-2xl my-shadow cursor-pointer text-center m-auto w-full">
+
+                <div [routerLink]="['Information', film.imdbID]" class="cursor-pointer media-h overflow-hidden my-hover">
+
+                    <img class="m-auto pt-5 w-64 object-cover my-hover-img px-2" *ngIf="film.Poster !== 'N/A'" [src]='film.Poster'
+                        alt="{{film.Title}}">
+                    <img class="m-auto pt-5 w-64 object-cover my-hover-img px-2" *ngIf="film.Poster == 'N/A'" src='assets/notFound.jpg'
+                        alt="{{film.Title}}">
+                        
+                    <h2 class="p-2 flex-grow ">{{film.Title}}</h2>
+
+                    <div class="flex gap-2 flex-wrap justify-center translate-y-28 my-hover-elem">
+                        <p class="border px-2 py-1 rounded border-zinc-400">{{film.Type}}</p>
+                        <p class="border px-2 py-1 rounded border-zinc-400">{{film.Year}}</p>
+                    </div>
+
+                </div>
+                
+
+                <!-- Кнопка зберегти в збережені -->
+                <i (click)="saveFilm(film.Poster,film.Title,film.Type,film.Year, film.imdbID)"
+                    class="fa-solid fa-star absolute top-2 right-2 text-yellow-200 film-save cursor-pointer hover:text-yellow-400 "></i>
+
+            </div>
+
+
+        </div>
+
+        <!-- Переключання між сторінками -->
+        <div *ngIf="receviedFilm" class="flex gap-2 justify-center mt-4 mb-5">
+            <button
+                class="p-2 color-component-switching color-text-switching color-shadow-switching rounded-sm border-none cursor-pointer"
+                (click)="prevPage()">Prev</button>
+
+            <div class="flex items-center gap-2">
+                <input (keyup.enter)="enterPage()" [(ngModel)]="page"
+                    class="w-10 h-full items-center outline-none color-text-switching bg-inherit border-none rounded text-base color-shadow-switching text-center"
+                    type="nuber" placeholder="{{page}}">
+                <p class="text-base color-text-switching"> /{{maxNumberPage}}</p>
+            </div>
+
+            <button
+                class="p-2 color-component-switching color-text-switching color-shadow-switching rounded-sm border-none cursor-pointer"
+                (click)="nextPage()">Next</button>
+        </div>
+
+        <!-- Повідомлення про помилку -->
+        <div *ngIf="errorMessage"
+            class="error fixed bottom-5 left-1/4 m-auto bg-red-500 w-1/2 p-4 rounded mt-2 flex justify-center">
+            <p class="text-white">{{errorMessage}}</p>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="searchProces" class="loader"></div>
